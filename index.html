@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        h1 { font-size: 50pt; }
+        h2 { font-size: 30pt; }
+		p{font-size: 20pt;}
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+		#Bottom{
+			background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+		}
+        section {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+		#title{
+			color: white;
+			font-family: Lucida Handwriting;
+		}
+        .portfolio-item {
+            margin-bottom: 20px;
+        }
+        .portfolio-item a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .portfolio-item h2 {
+            margin-bottom: 10px;
+        }
+        .portfolio-item p {
+            margin-bottom: 0;
+        }
+        #navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+        .menu-item {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            text-decoration: underline;
+        }
+        .menu-item.active {
+            font-weight: bold;
+        }
+        .arrow {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .iframe-container {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id ="title">Portfolio Of Charles Phillips</h1>
+        <p>Hello, I'm Charles Phillips, expert in HTML, CSS, Php, Javascript, Ajax, and more!</br> 
+		Well, maybe not an "expert", but good enough to make some cool projects. Check them out below!</p>
+    </header>
+    <div id="navigation">
+        <div class="menu-item" onclick="toggleIframes('iframeContainer1')">Module 2</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer2')">Module 3</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer3')">Module 4</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer4')">Module 5</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer5')">Module 6</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer6')">Module 7</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer7')">Module 8</div>
+        <div class="menu-item" onclick="toggleIframes('iframeContainer8')">Module 9</div>
+    </div>
+
+    <section id="module1">
+        <button onclick="toggleIframes('iframeContainer1')">
+            <h1>Module 2</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer1">
+		<h2>Click Preview to Redirect to Webpage</h2>
+            <h3>Assignment 1 - About Me</h3>
+            <iframe
+                id="myIframe1"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A1-Phillips_CP/aboutme.html">
+            </iframe></br>
+
+            <h3>Laboratory Activity 1 - Recipe</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L1-Phillips_CP/index.html">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module2">
+        <button onclick="toggleIframes('iframeContainer2')">
+            <h1>Module 3</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer2">
+				<h2>Click Preview to Redirect to Webpage</h2>
+            <h3>Assignment 2 - Journal</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A2-Phillips_CP/journal.html">
+            </iframe>
+            <h3>Laboratory Activity 2 - Movie Review</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L2-Phillips_CP/tmnt.html">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module3">
+        <button onclick="toggleIframes('iframeContainer3')">
+            <h1>Module 4</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer3">
+				<h2>Click Preview to Redirect to Webpage</h2>
+            <h3>Assignment 3 - Music</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A3-Phillips_CP/music.php">       
+            </iframe></br>
+            <h3>Laboratory Activity 3 - Movie Review Part Deux</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L3-Phillips_CP/movie.php">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module4">
+        <button onclick="toggleIframes('iframeContainer4')">
+            <h1>Module 5</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer4">
+				<h2>Click Preview to Redirect to Webpage</h2>
+            <h3>Assignment 4 - Buy a grade</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A4-Phillips_CP/buyagrade.html">
+            </iframe></br>
+            <h3>Laboratory Activity 4 - NerdLuv</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L4-Phillips_CP/resources/index.php">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module5">
+        <button onclick="toggleIframes('iframeContainer5')">
+            <h1>Module 6</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer5">
+				<h2>Click Preview to Redirect to Webpage</h2>
+            <h3>Laboratory Activity 5 - Kevin Bacon</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L5-Phillips_CP/index.php">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module6">
+        <button onclick="toggleIframes('iframeContainer6')">
+            <h1>Module 7</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer6">
+		
+				<h2>Click Preview to Redirect to Webpage</h2>
+			 <h3>Assignment 5 - Pimpify</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A5-Phillips_CP/pimpmytext.html">
+            </iframe></br>
+            <h3>Assignment 6 - Maze</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A6-Phillips_CP/maze.html">
+            </iframe></br>
+            <h3>Laboratory Activity 6 - Fifteen Puzzle</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L6-Phillips_CR/fifteen.html">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module7">
+        <button onclick="toggleIframes('iframeContainer7')">
+            <h1>Module 8</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer7">
+				<h2>Click Preview to Redirect to Webpage</h2>	
+            <h3>Assignment 7 - Urban Dictionary</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A7-Phillips_CP/urban.html">
+            </iframe></br>
+        </div>
+    </section>
+
+    <section id="module8">
+        <button onclick="toggleIframes('iframeContainer8')">
+            <h1>Module 9</h1>
+        </button>
+        <div class="iframe-container" id="iframeContainer8">
+				<h2>Click Preview to Redirect to Webpage</h2>	
+            <h3>Assignment 8 - Potato</h3>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-A8-Phillips_CP/potato2.html">
+            </iframe></br>
+            <h3>Lab Activity 8 - Remember the Cow</h3>
+			</br>
+            <iframe
+                id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="300"
+                height="200"
+                src="http://localhost/CMSC121-L8-Phillips_CP/index.php">
+            </iframe></br>
+        </div>
+    </section>
+	<div id="Bottom">
+		<p>Thanks for Visiting</p>
+		</div>
+    <script>
+    $(document).ready(function(){
+      $("iframe").on("load", function(){
+        var iframeSrc = $(this).contents().get(0).location.href;
+        $(this).contents().on("mousedown mouseup click", function(){
+          window.location.href = iframeSrc;
+        });
+      });
+	  });
+
+        function toggleIframes(iframeContainerId) {
+            const iframeContainer = document.getElementById(iframeContainerId);
+            const currentDisplay = window.getComputedStyle(iframeContainer).display;
+
+            iframeContainer.style.display = currentDisplay === 'none' ? 'block' : 'none';
+
+            // Scroll to the module
+            const module = iframeContainer.closest('section');
+            window.scrollTo({ top: module.offsetTop, behavior: 'smooth' });
+
+            // Highlight the active menu item
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => item.classList.remove('active'));
+            document.querySelector(`.menu-item[onclick="toggleIframes('${iframeContainerId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
