@@ -1,0 +1,31 @@
+body,input, textarea, button{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14pt;
+	
+	
+}
+h1{
+	margin-bottom: 0;
+	margin-top: 0;
+	margin-left: 1em;
+}
+img{
+	float: left;
+	
+}
+
+
+#top{
+	display: flex;
+}
+
+.headfoot{
+background-color: #005AB4;
+color: white;
+padding: 0.5em;
+
+}
+
+#w3c{
+	display:block;
+}

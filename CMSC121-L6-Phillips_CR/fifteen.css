@@ -1,0 +1,35 @@
+body {
+	font-family: "Comic Sans MS";
+	text-align: center;
+}
+
+p {
+	font-size: 14pt;
+}
+
+.hover {
+	border: 5px solid red;
+	color: red;
+}
+
+#puzzlearea {
+	margin: auto;
+	position: relative;
+	width: 400px;
+	height: 400px;
+	
+}
+
+.puzzlebox {
+	background-image: url("background.jpg");
+	height: 90px;
+	line-height: 90px;
+	width: 90px;
+	font-size: 40pt;
+	border: 5px solid black;
+	position: absolute;
+}
+
+#w3c{
+	display:block;
+}
