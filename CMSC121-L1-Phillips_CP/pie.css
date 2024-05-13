@@ -1,0 +1,81 @@
+body{
+background-color:white;
+color: #404040;
+font-size: 11pt;
+font-family: Georgia, Garamond, serif;
+background-image: url("https://courses.cs.washington.edu/courses/cse190m/09sp/homework/1/silverware.jpg");
+}
+
+h1{
+text-align: center;
+color: #A4A400;
+background-color: #F0F0F0;
+font-size: 22pt;
+font-weight: bold;
+font-family: "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+text-decoration: underline;
+display: inline-block;	
+vertical-align: center;
+position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h2{
+	color: #A4A400;
+	background-color: #F0F0F0;
+	text-align: left;
+	font-size: 18pt;
+	font-family: "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+	text-decoration: underline;
+	display: inline-block;
+	
+}
+#cake{text-decoration: line-through;
+}
+p.high{
+background-color: #FFFFA8;
+font-style: italic;
+text-align: left;
+margin-left: 40px;
+}
+span.bold{
+font-weight: bold;
+}
+
+a{
+	color: #A4A400;
+}
+.copyright{
+	text-align: right;
+	float: left;
+	font-family: "Courier New", monospace;
+}
+.strong{
+font-weight: bold;
+}
+p.links{
+	float: left;
+	clear: left;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;	 
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -70px;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
