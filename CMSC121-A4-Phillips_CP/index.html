@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="stylesheet" type="text/css" href="../print.css" media="print" />
+		<script type="text/javascript" src="../labs.js"></script>
+		
+		<style type="text/css">
+			#netterms {
+				line-height: 2em;
+			}
+			
+			#netterms li {
+				display: inline;
+				padding: 0.2em 0.5em;
+				border-left: thin dotted gray;
+				border-right: thin dotted gray;
+			}
+			
+			.sectionheader {
+				margin-top: 14em;
+			}
+		</style>
+
+		<style type="text/css" media="print">
+			h2 {
+				margin-top: 1em !important;
+				padding-top: 0em !important;
+			}
+		</style>
+
+		<title>CMSC 121 Internet Technologies Activity 5 (Forms and PHP)</title>
+	</head>
+
+	<body>
+		<h1>
+			CMSC 121 Internet Technologies <br />
+			Activity 5: Forms and PHP
+		</h1>
+		<h1>
+			From: <br />
+			Web Programming Step by Step <br />
+			Lab 4: Forms and PHP
+		</h1>
+
+		<p class="credit">
+			original lab idea and code by Kevin Wallace; revised by Brian Le and Marty Stepp; recently revised by John Ultra
+		</p>
+		
+		<p class="credit">
+		<b>Credits and Acknowledgements </b> This laboratory activity was taken from Companion Website for <cite>Web Programming
+		Step by Step</cite> by Marty Stepp, Jessica Miller, and Victoria Kirst. These materials are used in this
+		course for educational purposes only. If you are keen, the complete list of materials can be found in the following
+		URL: <a href="https://www.webstepbook.com/">https://www.webstepbook.com/</a>. The copyright to these materials
+		are owned by their respective owners. 
+		</p>
+
+		<p>
+			This lab's purpose is to give you some practice writing a PHP script that processes an HTML form. You will also practice server-side form validation using PHP.
+		</p>
+
+
+		<div class="expectedoutput">
+			<img src="ex1-expected-output.png" alt="expected output" />
+		</div>
+
+		<p>
+			In this exercise, we'll write code to complete a web service that allows students to submit their credit card numbers in exchange for good
+			grades in the class. (Note: This is just a joke! We do not suggest that you actually try to bribe us for grades...) The HTML page
+			<code>buyagrade.html</code> will contain a form that submits to <code>sucker.php</code>. After submission, <code>sucker.php</code>
+			will do some checks to validate the information submitted, and it will output a web page that either
+			confirms the submission or informs the user to try submitting again.
+		</p>
+
+
+		<h2>Lab 5 Resources</h2>
+
+		<ul>
+			<li>
+				<a class="popup" href="http://www.webstepbook.com/supplements.shtml#slides">Lecture Slides</a>
+			</li>
+			
+			
+			<li>
+				
+						Use the <b> Developer Tools </b> that are built-in in modern web browsers to debug your work. For more info, visit the following links:
+						<a href="https://developers.google.com/web/tools/chrome-devtools"> Google Chrome</a>, and
+						<a href="https://developer.mozilla.org/en-US/docs/Tools">Mozilla Firefox</a>.
+				
+			</li>
+			<li>
+				<a class="popup" href="https://webster.cs.washington.edu/labs/09sp/4/buyagrade-ex5.html">Runnable version of the solution</a>
+			</li>
+			<li>
+				<b>Note</b>: This exercise uses PHP. Make sure to place your code under the Root Directory (i.e., under "activity5" folder) of your Web Server and access it via the web browser to run your PHP scripts. Opening PHP files directly 
+				on the browser will not work, unlike HTML pages. 
+			</li>
+		</ul>
+
+
+		<h2>Exercises for Today:</h2>
+		
+		<ol>
+			<li><a href="#ex1">Create a Form</a></li>
+			<li><a href="#ex2">Display Input Data</a></li>
+			<li><a href="#ex3">Save Form Data</a></li>
+			<li><a href="#ex4">Basic Validation</a></li>
+			<li><a href="#ex5">Luhn Credit Card Validation</a></li>
+		</ol>
+
+
+		<h2 id="ex1">Exercise 1: Creating a Form (roughly 15 minutes)</h2>
+
+		<p>
+
+			This exercise involves creating an HTML form that POSTs its submitted data to a PHP program on a server.  Download <a href="buyagrade.html"><code>buyagrade.html</code></a> to your disk (right-click the link and choose Save Link As...).  You need to modify this HTML file by turning it into an HTML form.  You will need to give <code>name</code> attributes to the form controls so they will be sent to the server as query parameters; the names are up to you.  Also, some form controls (such as radio buttons) need <code>value</code> attributes.  Fill the Section drop-down list with choices MA through MH.
+		</p>
+		
+		<p>
+			When you're done with this exercise, your form should look roughly like the screenshot at the top of this handout.
+		</p>
+
+		<p>
+			Test your form to see that it is submitting the proper parameters by temporarily setting its <code>action</code> attribute to:
+		</p>
+
+<pre>
+http://localhost/webex/activity5/params.php
+</pre>
+
+		<p>
+			You can try the <a class="popup" href="https://www.webstepbook.com/supplements/labsection/lab4-buyagrade/solution/buyagrade-ex1.html">runnable solution</a> to this exercise (so you can see how your page is supposed to look and work. Don't look at the source code yet, please!)
+		</p>
+
+
+		<h2 id="ex2">Exercise 2: Displaying Input Data (roughly 10 minutes)</h2>
+
+		<p>
+			In this exercise, you will write the PHP page that will handle the submitted form data.  Tell you <code>buyagrade.html</code> to POST to <code>sucker.php</code>.  The <code>sucker.php</code> page will receive the parameters from <code>buyagrade.html</code> and will output an HTML confirmation page.  Here is a skeleton version of this page that does not actually display the data submitted by the user.  Modify it to display the submitted data.
+		</p>
+		
+		<ul>
+			<li>
+				<a href="sucker.php"><code>sucker.php</code></a>
+			</li>
+		</ul>
+
+		<p>
+			Your page should at least display the submitter's name, credit card number, and credit card type (Visa or MasterCard) in the confirmation page.  For now, your page doesn't actually need to save this information in any way on the server.
+		</p>
+
+		<div class="expectedoutput">
+			<img src="ex2-expected-output.png" alt="expected output" />
+		</div>
+
+		<p>
+			To keep your code clean, as much as possible you should embed variables' values in HTML using PHP expression blocks such as <code>&lt;?= <var>expression</var> ?></code>.
+		</p>
+
+		<p>
+			You can try the <a class="popup" href="https://www.webstepbook.com/supplements/labsection/lab4-buyagrade/solution/buyagrade-ex2.html">runnable solution</a> to this exercise (so you can see how your page is supposed to look and work. Don't look at the source code yet, please!)
+		</p>
+		
+		
+		<h2 id="ex3">Exercise 3: Save the Form Data (roughly 10 minutes)</h2>
+		
+		<p>
+			Modify your <code>sucker.php</code> page to save the submitted data to the file <code>suckers.txt</code>.  This file should have a format similar to the following:
+		</p>
+		
+		<pre>
+Ryan;MA;1234123412341234;visa
+Kevin W;MF;5963109385987345;mastercard
+Kimberly Todd;MC;7328904328904902;mastercard
+Marty Stepp;MC;4444100020003000;visa
+</pre>
+
+		<p>
+			Also change your page's output to show the complete contents of this file to the user.  Place the file contents into an HTML <code>&lt;pre&gt;</code> element to preserve the whitespace.
+		</p>
+		
+		<div class="expectedoutput">
+			<img src="ex3-expected-output.png" alt="expected output" />
+		</div>
+
+		<p>
+			Recall that you can read and write the contents of a file using the PHP <a class="popup" href="http://www.php.net/file_get_contents"><code>file_get_contents</code></a> and <a class="popup" href="http://www.php.net/file_put_contents"><code>file_put_contents</code></a> functions.
+		</p>
+		
+		
+
+		<h2 id="ex4">Exercise 4: Basic Data Validation (roughly 10 minutes)</h2>
+
+		<p>
+			Update your <code>sucker.php</code> file to verify that the user did not leave any fields blank when submitting the form.
+			You can check whether a particular parameter has been passed using the PHP function <code>isset</code>.</p>
+		<p>
+			However, <code>isset($_REQUEST["<var>name</var>"])</code> will only check if the <code>$_REQUEST</code> associative array
+			has <code>"<var>name</var>"</code> as one of its keys; it does not check to see if the value of <code>$_REQUEST["<var>name</var>"]</code>
+			is a non-empty value. Remember that <code>$_REQUEST["<var>name</var>"] = ""</code> would give a falsey value and
+			<code>$_REQUEST["<var>name</var>"] = "abc"</code> would give a truthy value.
+		</p>
+
+		<p>
+			If the user has not filled in every field, show an error message like the one below instead of displaying their submitted data:
+		</p>
+
+		<div class="expectedoutput">
+			<img src="ex4-expected-output.png" alt="expected output" />
+		</div>
+
+		<p>
+			Give them the chance to try again by linking back to your HTML page.
+		</p>
+
+		<p>
+			You can try the <a class="popup" href="https://www.webstepbook.com/supplements/labsection/lab4-buyagrade/solution/buyagrade-ex4.html">runnable solution</a> to this exercise (so you can see how your page is supposed to look and work. Don't look at the source code yet, please!)
+		</p>
+
+
+		<h2 id="ex5">Exercise 5 (l33t h4x0rZ only): Verify Credit Card Numbers (roughly 15-30 minutes)</h2>
+
+		<p>
+			Update your <code>sucker.php</code> file to further check the validity of the credit card number.
+		</p>
+
+		<ul>
+			<li>Check to make sure the credit card number is composed of exactly 16 numerical digits.</li>
+			<li>Check to make sure that a Visa card number starts with a "4" and a MasterCard number starts with a "5".</li>
+			<li>You can check for these things using regular expressions in combination with the php function <a class="popup" href="http://www.php.net/preg_match"><code>preg_match</code></a>. A really good regex will allow for an optional <q>-</q> between every grouping of 4 numbers. For example, 4111111111111111 and 4111-1111-1111-1111 would both be valid credit card numbers.</li>
+		</ul>
+
+		<p>
+			If the user has not supplied a card number with the correct number of digits, show an error message like the one below:
+		</p>
+
+		<div class="expectedoutput">
+			<img src="ex5-expected-output.png" alt="expected output" />
+		</div>
+
+		<p>
+			If you finish the above checks and are <strong>really</strong> l33t, update your <code>sucker.php</code> file to check that the supplied card number passes the Luhn Algorithm (<a class="popup" href="http://en.wikipedia.org/wiki/Luhn_algorithm">wiki</a>). It is a checksum algorithm developed by Hans Peter Luhn often used to protect against accidental errors in typing credit card numbers: any valid credit card number will pass the algorithm, though not every invalid credit card number will fail it. If the submitted credit card number does not pass the Luhn Algorithm, you can display the same error as you did when the card number had the incorrect number of digits.
+		</p>
+
+		<p>
+			The Wikipedia page previously linked gives a PHP implementation of the algorithm, but it is poorly coded and hard to understand. If you are running out of time, you may use the code from that page in your php code; otherwise, the text below describes how to code this algorithm and you should use it to try to code it yourself (especially if you're a CSE major!).
+		</p>
+
+		<p>
+			From <em>Building Java Programs</em>:
+		</p>
+<blockquote>
+		<p>
+			You may not know that credit card numbers contain several pieces of information for performing validity tests.  For example, a valid credit card number passes a digit-sum test known as the Luhn checksum algorithm.  Luhn's algorithm states that if you sum the digits of the number in a certain way, the total sum must be a multiple of 10 for a valid Visa number.  Systems that accept credit cards perform a Luhn test before contacting the credit card company for final verification.  This lets the company block fake or mistyped credit card numbers.
+		</p>
+
+		<p>
+			The algorithm for summing the digits is the following.  Consider each digit of the credit card to have a zero-based index: the first is at index 0, and the last is at index 15.  Start from the rightmost digit and process each digit one at a time.  For digits at odd-numbered indexes (the 15th digit, 13th digit, etc.), simply add that digit to the cumulative sum.  For digits at even-numbered indexes (the 14th, 12th, etc), double the digit's value, then if that doubled value is less than 10, add it to the sum.  If the doubled number is 10 or greater, add each of its digits separately into the sum.
+		</p>
+
+		<p>
+			The following pseudocode describes the Luhn algorithm to sum the digits:
+		</p>
+
+<pre class="pseudocode">
+sum = 0.
+for (each digit of credit card number, starting from the last index) {
+    if (digit's index is odd) {
+        add digit to sum.
+    } else {
+        double the digit's value.
+        if (doubled value < 10) {
+            add doubled value to sum.
+        } else {
+            split doubled value into its two digits.
+            add first digit to sum.
+            add second digit to sum.
+        }
+    }
+}
+</pre>
+
+		<p>
+			4111111111111111 and 4408041254369873 are example credit card numbers that pass the Luhn algorithm.  The following figure shows the algorithm summing the latter number in detail.  Notice how digits at even indexes are doubled and potentially split into two digits if they exceed 10 when doubled.  For example, the number 7 at index 8 which is doubled to 14 which split to make 1+4.
+		</p>
+
+<pre class="pseudocode">
+CC #    4408 0412 5436 9873
+
+        4   4   0   8   0   4   1   2    7    4   3   6    9    8    5    3
+Scale  *2      *2      *2      *2       *2       *2       *2        *2
+       --------------------------------------------------------------------
+        8   4   0   8   0   4   2   2   14    4   6   6   18    8   10    3
+
+Sum   = 8 + 4 + 0 + 8 + 0 + 4 + 2 + 2 + 1+4 + 4 + 6 + 6 + 1+8 + 8 + 1+0 + 3
+      = 70
+
+70 is divisible by 10, therefore this card number is valid.
+</pre>
+		</blockquote>
+
+		<p>
+			You can try our <a class="popup" href="https://www.webstepbook.com/supplements/labsection/lab4-buyagrade/solution/buyagrade-ex5.html">runnable solution</a> to this exercise (so you can see how your page is supposed to look and work.
+		</p>
+		
+		
+
+		
+		<div class="w3c">
+			<a href="http://validator.w3.org/check/referer"><img src="../w3c-xhtml11.png" alt="Valid XHTML 1.1" /></a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="../w3c-css.png" alt="Valid CSS!" /></a>
+		</div>
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+
+		<script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-2729135-5");
+			pageTracker._initData();
+			pageTracker._trackPageview();
+		</script>
+	</body>
+</html>
+
