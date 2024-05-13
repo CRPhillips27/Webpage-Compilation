@@ -1,0 +1,64 @@
+body {
+  background-color: #dad9d4;
+  font-family: Verdana;
+}
+
+form {
+  width: 24em;
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sortby {
+  width: 10%;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border-collapse: collapse;
+  border: 1px solid #dad9d4;
+
+}
+
+input {
+  border-bottom: 2px solid #dad9d4;
+  border-right: 2px solid #dad9d4;
+}
+
+legend {
+  text-align: left;
+}
+
+td, th {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dad9d4;
+}
+
+#frame {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+  top: 0;
+  position: absolute;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#banner, #w3c{
+  padding: 1em;
+  background-image: url("images/banner-background.png");
+  color: white;
+  height: 55px;
+}
+
+#main {
+  padding: 1em;
+  background-color: white;
+  text-align: center;
+}
