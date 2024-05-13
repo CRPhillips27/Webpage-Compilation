@@ -1,5 +1,5 @@
 # Webpage Project Compilation
-This project is a simple localhost webpage that serves as a repository for all completed webpage activites as per the requirements of CMSC 121 in the BSCS Program at UP Tacloban College
+This project is a simple localhost webpage that serves as a repository for all completed webpage activites as per the requirements of CMSC 121 in the BSCS Program at UP Tacloban College. HTML, CSS, PHP, JS, and Ajax were all used in the creation of these projects.
 ## Prerequisites
 
 Before getting started, ensure you have [XAMPP](https://www.apachefriends.org/index.html) installed on your machine.
